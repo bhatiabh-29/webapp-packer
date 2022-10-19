@@ -1,12 +1,11 @@
 packer {
   required_plugins {
     amazon = {
-      version = ">= 1.0.0"
+      version = ">= 1.1.1"
       source  = "github.com/hashicorp/amazon"
     }
   }
 }
-
 variable "aws_region" {
   type    = string
   default = "us-east-1"
@@ -25,11 +24,11 @@ variable "ssh_username" {
 variable "subnet_id" {
   type    = string
   default = "subnet-0991b60a2d76a5270"
-  }
+}
 
 # https://www.packer.io/plugins/builders/amazon/ebs
 source "amazon-ebs" "my-ami" {
-  region     = "${var.aws_region}"
+  region          = "${var.aws_region}"
   ami_name        = "csye6225_${formatdate("YYYY_MM_DD_hh_mm_ss", timestamp())}"
   ami_description = "AMI for CSYE 6225"
   ami_regions = [
@@ -65,10 +64,10 @@ build {
   //   ]
   // }
 
-provisioner "file" {
+  provisioner "file" {
     source      = "../../Zips/webapp.zip"
     destination = "/home/ubuntu/webapp.zip"
-    }
+  }
 
   provisioner "file" {
     source      = "./webapp.service"
@@ -76,11 +75,11 @@ provisioner "file" {
   }
 
   provisioner "shell" {
-    script ="./app.sh"
- }
+    script = "./app.sh"
+  }
 
 }
 
 
 
- 
+
