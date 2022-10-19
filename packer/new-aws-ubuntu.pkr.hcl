@@ -66,7 +66,7 @@ build {
   // }
 
 provisioner "file" {
-    source      = "../Zips/webapp.zip"
+    source      = "../../Zips/webapp.zip"
     destination = "/home/ubuntu/webapp.zip"
     }
 
