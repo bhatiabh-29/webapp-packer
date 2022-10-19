@@ -24,7 +24,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Run Packer Container - Validate Template
       # pull official hashicorp packer container for docker hub
-      uses: docker://hashicorp/packer
+      uses: docker://webapp-packer/packer
       with:
         args: "validate  packer/new-aws-ubuntu.pkr.hcl"
      
