@@ -27,5 +27,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Packer Container - Validate Template
       # pull official hashicorp packer container for docker hub
-      uses: packer/new-aws-ubuntu.pkr.hcl
+      uses: 'packer/new-aws-ubuntu.pkr.hcl'
       
