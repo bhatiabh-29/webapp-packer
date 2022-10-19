@@ -27,5 +27,5 @@ jobs:
       uses: docker://hashicorp/packer:light
 
       with:
-        args: "validate  packer/new-aws-ubuntu.pkr.hcl"
+        args: "validate  /github/workspace/webapp-packer/packer/new-aws-ubuntu.pkr.hcl"
      
