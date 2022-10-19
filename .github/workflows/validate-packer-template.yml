@@ -28,4 +28,6 @@ jobs:
     - name: Run Packer Container - Validate Template
       # pull official hashicorp packer container for docker hub
       uses: docker://hashicorp/packer:light
+      with:
+        args: "validate /packer/new-aws-ubuntu.pkr.hcl"
      
