@@ -26,5 +26,5 @@ jobs:
       # pull official hashicorp packer container for docker hub
       uses: docker://hashicorp/packer
       with:
-        args: "validate  /webapp-packer/packer/new-aws-ubuntu.pkr.hcl"
+        args: "validate  /github/webapp-packer/packer/new-aws-ubuntu.pkr.hcl"
      
