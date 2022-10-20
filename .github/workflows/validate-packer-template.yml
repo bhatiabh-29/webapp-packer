@@ -50,4 +50,4 @@ jobs:
           packer-version: 1.8.3
 
     - name: Build image from template
-      run: packer build ${{ github.workspace }}/packer/new-aws-ubuntu.pkr.hcl
+      run: packer init && packer build ${{ github.workspace }}/packer/new-aws-ubuntu.pkr.hcl
