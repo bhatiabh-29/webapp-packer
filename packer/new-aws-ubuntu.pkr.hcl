@@ -65,18 +65,18 @@ build {
   //   ]
   // }
 
-provisioner "file" {
-    source      = "../../Zips/webapp.zip"
+  provisioner "file" {
+    source      = "webapp.zip"
     destination = "/home/ubuntu/webapp.zip"
-    }
+     }
 
   provisioner "file" {
-    source      = "./webapp.service"
+    source      = "packer/webapp.service"
     destination = "/tmp/webapp.service"
   }
 
   provisioner "shell" {
-    script ="./app.sh"
+    script ="packer/app.sh"
  }
 
 }
