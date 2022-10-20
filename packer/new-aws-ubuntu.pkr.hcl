@@ -22,10 +22,10 @@ variable "ssh_username" {
   default = "ubuntu"
 }
 
-variable "subnet_id" {
-  type    = string
-  default = "subnet-0991b60a2d76a5270"
-  }
+//variable "subnet_id" {
+//  type    = string
+//  default = "subnet-0991b60a2d76a5270"
+//  }
 
 # https://www.packer.io/plugins/builders/amazon/ebs
 source "amazon-ebs" "my-ami" {
@@ -45,7 +45,7 @@ source "amazon-ebs" "my-ami" {
   instance_type = "t2.micro"
   source_ami    = "${var.source_ami}"
   ssh_username  = "${var.ssh_username}"
-  subnet_id     = "${var.subnet_id}"
+  //subnet_id     = "${var.subnet_id}"
 
   launch_block_device_mappings {
     delete_on_termination = true
