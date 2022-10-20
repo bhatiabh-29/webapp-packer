@@ -1,4 +1,11 @@
+env: # Grab the AWS environment variables for deployment
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
+
 # This is a basic workflow to help you get started with Actions
+
+
 
 name: Build & Deploy Packer Template
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -28,13 +35,19 @@ jobs:
     #   with:
     #     args: "build /github/workspace/packer/new-aws-ubuntu.pkr.hcl"
       # build artifact
-    - name: Build Artifact
-      uses: hashicorp/packer-github-actions@master
+    # - name: Build Artifact
+    #   uses: hashicorp/packer-github-actions@master
+    #   with:
+    #     command: build
+    #     arguments: "-color=false -on-error=abort"
+    #     target: packer/new-aws-ubuntu.pkr.hcl
+    #     working_directory: ${{ github.workspace }}
+
+
+    - name: Use latest Packer
+      uses: hashicorp-contrib/setup-packer@v2
       with:
-        command: build
-        arguments: "-color=false -on-error=abort"
-        target: packer/new-aws-ubuntu.pkr.hcl
-        working_directory: ${{ github.workspace }}
-      env: # Grab the AWS environment variables for deployment
-        AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-        AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          packer-version: 1.8.3
+
+    - name: Build image from template
+      run: packer build ${{ github.workspace }}/packer/new-aws-ubuntu.pkr.hcl
