@@ -51,4 +51,4 @@ jobs:
 
     - name: Build image from template
       working-directory: ${{ github.workspace }}
-      run: packer init packer/new-aws-ubuntu.pkr.hcl && packer build packer/new-aws-ubuntu.pkr.hcl
+      run: ls -a && packer init packer/new-aws-ubuntu.pkr.hcl && packer build packer/new-aws-ubuntu.pkr.hcl
